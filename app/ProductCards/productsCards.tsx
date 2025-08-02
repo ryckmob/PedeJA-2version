@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type Product = {
   id: number;
@@ -8,49 +8,43 @@ type Product = {
   quantity: number;
 };
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: 'Margherita',
-    price: 0.0,
-    imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp',
-    quantity: 1,
-  },
-  {
-    id: 2,
-    name: 'Margherita',
-    price: 0.0,
-    imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp',
-    quantity: 1,
-  },
-  {
-    id: 3,
-    name: 'Margherita',
-    price: 0.0,
-    imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp',
-    quantity: 1,
-  },
-  {
-    id: 4,
-    name: 'Margherita',
-    price: 0.0,
-    imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp',
-    quantity: 1,
-  },
+const initialProducts: Product[] = [
+  { id: 1, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 1 },
+  { id: 2, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 1 },
+  { id: 3, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 1 },
+  { id: 4, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 1 },
 ];
 
 export default function ProductCards() {
+  const [products, setProducts] = useState<Product[]>(initialProducts);
+
+  const increment = (id: number) => {
+    setProducts(products =>
+      products.map(p => (p.id === id ? { ...p, quantity: p.quantity + 1 } : p))
+    );
+  };
+
+  const decrement = (id: number) => {
+    setProducts(products =>
+      products.map(p =>
+        p.id === id
+          ? { ...p, quantity: p.quantity > 1 ? p.quantity - 1 : 1 }
+          : p
+      )
+    );
+  };
+
   return (
     <div className="flex justify-center">
       <div
         className="
-          grid 
+          grid
           gap-2
           px-2 py-4
           grid-cols-[repeat(auto-fill,minmax(98px,1fr))]
           justify-start
           max-w-[450px]
-          "
+        "
         style={{ width: '100%' }}
       >
         {products.map(({ id, name, price, imgSrc, quantity }) => (
@@ -67,11 +61,19 @@ export default function ProductCards() {
               {price.toFixed(2).replace('.', ',')}
             </p>
             <div className="mt-2 flex items-center space-x-2">
-              <button className="rounded border bg-white px-2" type="button">
+              <button
+                className="rounded border bg-white px-2"
+                type="button"
+                onClick={() => decrement(id)}
+              >
                 −
               </button>
               <span>{quantity}</span>
-              <button className="rounded border bg-white px-2" type="button">
+              <button
+                className="rounded border bg-white px-2"
+                type="button"
+                onClick={() => increment(id)}
+              >
                 +
               </button>
             </div>
