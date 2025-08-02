@@ -9,10 +9,10 @@ type Product = {
 };
 
 const initialProducts: Product[] = [
-  { id: 1, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 1 },
-  { id: 2, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 1 },
-  { id: 3, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 1 },
-  { id: 4, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 1 },
+  { id: 1, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 0 },
+  { id: 2, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 0 },
+  { id: 3, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 0 },
+  { id: 4, name: 'Margherita', price: 0.0, imgSrc: '/618283-pizza-artesanal-calabresa_inn.webp', quantity: 0 },
 ];
 
 export default function ProductCards() {
