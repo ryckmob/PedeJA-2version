@@ -14,7 +14,7 @@ export default function CategorieScroll() {
   ];
 
   return (
-    <div className="overflow-x-auto bg-orange-500 px-4 py-3 whitespace-nowrap">
+    <div className="overflow-x-auto bg-orange-400 px-4 py-3 pt-11 whitespace-nowrap">
       <div className="flex gap-6 justify-center">
         {categories.map((cat, index) => (
           <div key={index} className="flex flex-col items-center text-white">
